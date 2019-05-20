@@ -1,0 +1,36 @@
+mutation AddCategory($name: String!, $parent: String){
+  createCategory(name:$name, parent: $parent){
+    name,
+    id,
+    parent
+  }
+}
+
+query GetCategory($id: String!){
+  category(id: $id){
+    id,
+    name,
+    parent{
+      name,
+      id
+    }
+  }
+}
+
+mutation CreateCity($name:String!, $lat: Float!, $long:Float!){
+  createCity(name: $name, lat: $lat, long: $long){
+    name,
+    lat,
+    long,
+    id
+  }
+}
+
+query GetCity($id:String!){
+  city(id: $id){
+    name,
+    lat,
+    long,
+    id
+  }
+}

@@ -1,0 +1,22 @@
+type Query {
+  category(id: String!): Category,
+  city(id: String!): City
+}
+
+type Mutation {
+  createCategory(name: String!, parent: String): Category
+  createCity(name: String!, lat: Float!, long: Float!): City
+} 
+
+type Category {
+  id: String,
+  name: String,
+  parent: Category
+}
+
+type City {
+  id: String,
+  name: String,
+  lat: Float,
+  long: Float,
+}

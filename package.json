@@ -9,6 +9,7 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "graphql": "^14.3.0",
+    "graphql-type-json": "^0.3.0",
     "graphql-yoga": "^1.17.4",
     "mongoose": "^5.5.9",
     "nodemon": "^1.19.0"

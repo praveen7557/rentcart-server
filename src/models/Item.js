@@ -18,8 +18,12 @@ const Item = mongoose.model('Item', {
   currentPrice: Number,
   price: Number,
   address: String,
-  location: String,
+  location: Object,
   caution: Number,
+  area: {
+    type: Schema.ObjectId,
+    ref: "Area"
+  },
   city: {
     type: Schema.ObjectId,
     ref: "City"

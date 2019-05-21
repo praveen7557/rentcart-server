@@ -1,4 +1,4 @@
-const { Category, City } = require('../models');
+const { Category, City, Item } = require('../models');
 
 const Query = {
   async category(_, { id }) {
@@ -8,6 +8,10 @@ const Query = {
   async city(_, { id }) {
     let city = await City.findById(id);
     return city;
+  },
+  async item(_, { id }) {
+    let item = await Item.findById(id).populate('city area category').exec();
+    return item;
   }
 }
 

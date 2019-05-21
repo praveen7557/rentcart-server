@@ -1,11 +1,16 @@
+scalar GraphQLJSONObject
+
 type Query {
   category(id: String!): Category,
-  city(id: String!): City
+  city(id: String!): City,
+  item(id: String!): Item
 }
 
 type Mutation {
   createCategory(name: String!, parent: String): Category
   createCity(name: String!, lat: Float!, long: Float!): City
+  createArea(name: String!, city: String!): Area
+  createItem (name: String!,description: String!, images:[String], category: String, currentPrice: Int, price: Int, address: String, location: GraphQLJSONObject, caution: Int, area: String, city: String): Item
 } 
 
 type Category {
@@ -19,4 +24,30 @@ type City {
   name: String,
   lat: Float,
   long: Float,
+}
+
+type Area {
+  id: String,
+  name: String,
+  city: City
+}
+
+type Item {
+  id: String
+  name: String!,
+  description: String!,
+  images:[String], 
+  category: Category, 
+  currentPrice: Int, 
+  price: Int, 
+  address: String, 
+  location: Location, 
+  caution: Int, 
+  area: Area, 
+  city: City
+}
+
+type Location {
+  lat: Float,
+  long: Float
 }

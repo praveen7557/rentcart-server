@@ -34,3 +34,54 @@ query GetCity($id:String!){
     id
   }
 }
+
+mutation CreateArea($name:String!, $city: String!){
+  createArea(name: $name, city: $city){
+    name,
+    city{
+      name,
+      id
+    }
+  }
+}
+
+mutation CreateItem ($name: String!,$description: String!, $images:[String], $category: String, $currentPrice: Int, $price: Int, $address: String, $location: GraphQLJSONObject, $caution: Int, $area: String, $city: String){
+  createItem(name: $name, description: $description, images:$images, category: $category, currentPrice: $currentPrice, price: $price, address: $address, location: $location, caution: $caution, area: $area, city: $city){
+    id,
+    name
+  }
+}
+
+#####
+{
+  "name":"Yonex Carbonex 6000 Racquet",
+  "description": "Yonex Carbonex 6000 Racquet",
+  "images":["https://images-na.ssl-images-amazon.com/images/I/51NxKo%2Bx4QL._SL1000_.jpg","https://n3.sdlcdn.com/imgs/a/i/e/YONEX-CARBONEX-6000-Badminton-Racket-1126541-1-72ae8.jpg"],
+  "price": 50,
+  "city": "5ce2863a04d37eaf70a7f191",
+  "caution": 500,
+  "area": "5ce3be2b20f40ac05c1f68e1",
+  "currentPrice": 1149,
+  "address": "HMT Hills",
+  "category": "5ce254e190baeea8ea3cde5f"
+}
+#####
+
+query GetItem($id:String!){
+  item(id: $id){
+    name,
+    id,
+    city{
+      name
+    },
+    category{
+      name
+    },
+    area{
+      name
+    },
+    location{
+      lat
+    }
+  }
+}

@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Category = mongoose.model('Category', {
+const Area = mongoose.model('Area', {
   name: {
     type: String,
     required: true,
     unique: true
   },
-  parent: {
+  city: {
     type: Schema.ObjectId,
-    ref: 'Category',
-    default: null
+    ref: 'City',
+    required: true
   }
 })
 
-module.exports = Category;
+module.exports = Area;

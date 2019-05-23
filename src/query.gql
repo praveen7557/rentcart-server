@@ -2,7 +2,9 @@ mutation AddCategory($name: String!, $parent: String){
   createCategory(name:$name, parent: $parent){
     name,
     id,
-    parent
+    parent{
+      name
+    }
   }
 }
 

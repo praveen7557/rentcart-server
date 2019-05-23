@@ -6,7 +6,7 @@ const Mutation = {
       name,
       parent
     });
-    return category;
+    return category.populate('parent').execPopulate();
   },
   async createCity(_, { name, lat, long }) {
     let city = await City.create({

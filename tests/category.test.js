@@ -33,15 +33,13 @@ query GetCategory($id: String!){
 let categoryId;
 
 beforeAll(async () => {
-  await server.listen({ port: process.env.PORT });
-  mongoose.connection.dropDatabase();
   let res = await Category.create({
     name: "Sports"
   })
   categoryId = res.id;
 })
 
-jest.setTimeout(30000);
+jest.setTimeout(1000000);
 test('add category', async () => {
   const { query, mutate } = createTestClient(server);
 
@@ -68,16 +66,15 @@ test('add category with parent', async () => {
   expect(resData.parent.name).toBe("Sports");
 });
 
-
-// test('get city by id', async () => {
-//   const { query, mutate } = createTestClient(server);
-//   let cityData = await query({
-//     query: getCity,
-//     variables: {
-//       id
-//     }
-//   });
-//   expect(cityData.data.city.name).toBe("Ladakh");
-// })
+test('get category by id', async () => {
+  const { query, mutate } = createTestClient(server);
+  let catData = await query({
+    query: getCategory,
+    variables: {
+      id: categoryId
+    }
+  });
+  expect(catData.data.category.name).toBe("Sports");
+})
 
 

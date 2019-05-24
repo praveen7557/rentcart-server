@@ -19,8 +19,6 @@ mutation CreateArea($name:String!, $city: String!){
 let cityId;
 
 beforeAll(async () => {
-  await server.listen({ port: process.env.PORT });
-  mongoose.connection.dropDatabase();
   let res = await City.create({
     name: "Ladakh",
     lat: 10.1123,
@@ -29,7 +27,7 @@ beforeAll(async () => {
   cityId = res.id;
 })
 
-jest.setTimeout(30000);
+jest.setTimeout(1000000);
 test('add area', async () => {
   const { query, mutate } = createTestClient(server);
 
@@ -43,5 +41,3 @@ test('add area', async () => {
   let resData = res.data.createArea;
   expect(resData.name).toBe("IceMountations");
 });
-
-

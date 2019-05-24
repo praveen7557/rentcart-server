@@ -29,17 +29,17 @@ query GetCity($id:String!){
 let id;
 
 beforeAll(async () => {
-  await server.listen({ port: process.env.PORT });
-  mongoose.connection.dropDatabase();
+  // await server.listen({ port: process.env.PORT });
+  // mongoose.connection.dropDatabase();
   let res = await City.create({
-    name: "Ladakh",
+    name: "BHPL",
     lat: 10.1123,
     long: 12.112
   });
   id = res.id;
 })
 
-jest.setTimeout(30000);
+jest.setTimeout(1000000);
 test('add city', async () => {
   const { query, mutate } = createTestClient(server);
 
@@ -71,7 +71,6 @@ test('get city by id', async () => {
       id
     }
   });
-  expect(cityData.data.city.name).toBe("Ladakh");
+  expect(cityData.data.city.name).toBe("BHPL");
 })
-
 

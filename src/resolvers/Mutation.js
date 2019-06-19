@@ -1,4 +1,5 @@
 const { Category, City, Area, Item } = require('../models');
+const { uploadBaseImagesToStorage } = require("../helpers/uploadToStorage");
 
 const Mutation = {
   async createCategory(_, { name, parent }) {
@@ -24,10 +25,15 @@ const Mutation = {
     return await area.populate('city').execPopulate()
   },
   async createItem(_, { name, description, images, category, currentPrice, price, address, location, caution, area, city }) {
+    let imageUrls = await uploadBaseImagesToStorage(images);
     let item = await Item.create({
-      name, description, images, category, currentPrice, price, address, location, caution, area, city
+      name, description, images: imageUrls, category, currentPrice, price, address, location, caution, area, city
     });
     return item;
+  },
+  async uploadImages(_, { images }) {
+    let resImages = await uploadBaseImagesToStorage(images);
+    return resImages;
   }
 }
 

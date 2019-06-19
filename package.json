@@ -10,6 +10,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
+    "@google-cloud/storage": "^2.5.0",
     "@types/jest": "^24.0.13",
     "apollo-server": "^2.5.0",
     "apollo-server-testing": "^2.5.0",
@@ -23,6 +24,7 @@
     "graphql-middleware": "^3.0.2",
     "graphql-tools": "^4.0.4",
     "graphql-type-json": "^0.3.0",
+    "mimetypes": "^0.1.1",
     "mongoose": "^5.5.9",
     "nodemon": "^1.19.0"
   },

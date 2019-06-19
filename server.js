@@ -1,6 +1,7 @@
 const { ApolloServer } = require('apollo-server')
 
 const schema = require('./src/schema')
+const getErrorCode = require("./src/errors/getErrorCode");
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
@@ -16,6 +17,10 @@ const server = new ApolloServer({
   context: ({ req }) => ({
     ...req
   }),
+  formatError: (err) => {
+    const error = getErrorCode(err.message)
+    return ({ message: error.message, statusCode: error.statusCode })
+  },
   playground: process.env.NODE_ENV === 'development',
   debug: process.env.NODE_ENV === 'development'
 })

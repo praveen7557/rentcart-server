@@ -87,3 +87,31 @@ query GetItem($id:String!){
     }
   }
 }
+
+query getCategories {
+  categories {
+    id,
+    name
+  }
+}
+
+query getSubCategories($id: String) {
+  subCategories(id: $id) {
+    id,
+    name
+  }
+}
+
+query getCities {
+  cities {
+    id,
+    name
+  }
+}
+
+query getAreas($id: String) {
+  areas(id: $id) {
+    id,
+    name
+  }
+}

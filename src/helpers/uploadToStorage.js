@@ -11,10 +11,10 @@ const storage = new Storage({
   keyFilename: config.keyFilename
 });
 
-let uploadBaseImagesToStorage = async (images) => {
+let uploadBaseImagesToStorage = async (images, name) => {
   try {
     let imgUrl = await Promise.all(images.map(async (e) => {
-      return await uploadBaseImage("sample", e);
+      return await uploadBaseImage(name, e);
     }))
     return imgUrl;
   } catch (ex) {

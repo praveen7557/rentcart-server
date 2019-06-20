@@ -25,7 +25,8 @@ const Mutation = {
     return await area.populate('city').execPopulate()
   },
   async createItem(_, { name, description, images, category, currentPrice, price, address, location, caution, area, city }) {
-    let imageUrls = await uploadBaseImagesToStorage(images);
+    let str = name.replace(/\s+/g, '-').toLowerCase();
+    let imageUrls = await uploadBaseImagesToStorage(images, str);
     let item = await Item.create({
       name, description, images: imageUrls, category, currentPrice, price, address, location, caution, area, city
     });

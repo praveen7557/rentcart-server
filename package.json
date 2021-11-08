@@ -12,7 +12,7 @@
     "@babel/preset-env": "^7.4.5",
     "@google-cloud/storage": "^2.5.0",
     "@types/jest": "^24.0.13",
-    "apollo-server": "^2.5.0",
+    "apollo-server": "^2.25.3",
     "apollo-server-testing": "^2.5.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
